@@ -4,9 +4,11 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.Drive;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -21,8 +23,8 @@ public class Robot extends TimedRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
   private Drive drive = new Drive();
-  private Joystick throttleJS = new Joystick(int 0);
-  private Joystick turnJS = new Joystick(int 1);
+  private Joystick throttleJS = new Joystick(0);
+  private Joystick turnJS = new Joystick(1);
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -84,7 +86,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    drive.setOpenLoop(throttleJS.getRawAxis(int 1), turnJS.getRawAxis(int 0));
+    drive.setOpenLoop(throttleJS.getRawAxis(1), turnJS.getRawAxis(0));
   }
 
   /** This function is called once when the robot is disabled. */

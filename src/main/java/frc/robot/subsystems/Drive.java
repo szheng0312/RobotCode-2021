@@ -1,4 +1,9 @@
-package subsystems;
+package frc.robot.subsystems;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 public class Drive {
     private int right = 0;
@@ -13,6 +18,8 @@ public class Drive {
 
     rightMotor2.set(ControlMode.Follower, right);
     leftMotor2.set(ControlMode.Follower, left);
+    rightMotor.configSelectedFeedbackSensor(CTRE_MagEncoder_Relative,  int 0, int 1000);
+    leftMotor.configSelectedFeedbackSensor(CTRE_MagEncoder_Relative,  int 0, int 1000);
 
     public void setOpenLoop(double throttle, double turn){
         rightMotor.set(ControlMode.PercentOutput, throttle + turn);
